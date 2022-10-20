@@ -17,6 +17,8 @@ use libp2p::{
 
 use crate::{behaviour::NodeBehaviour, Libp2pConfig};
 
+use custom_libp2p_transport::{GenTcpConfig, TokioTcpTransport};
+
 /// Builds the transport stack that LibP2P will communicate over.
 async fn build_transport(
     keypair: &Keypair,
@@ -28,7 +30,7 @@ async fn build_transport(
     // TODO: make transports configurable
 
     let transport =
-        libp2p::tcp::TokioTcpTransport::new(libp2p::tcp::GenTcpConfig::default().nodelay(true));
+        TokioTcpTransport::new(GenTcpConfig::default().nodelay(true));
     let transport = libp2p::websocket::WsConfig::new(libp2p::tcp::TokioTcpTransport::new(
         libp2p::tcp::GenTcpConfig::default().nodelay(true),
     ))

@@ -38,6 +38,7 @@ ssh-key = { version = "0.4.2", features = ["ed25519", "std", "rand_core"], defau
 rand = "0.8.5"
 async-stream = "0.3.3"
 tempfile = "3.3.0"
+custom-libp2p-transport = { git = "ssh://git@github.com/little-bear-labs/ipfs-space.git", branch = "feature/poc-of-custom-transports-in-rust-libp2p", features = ["tokio"] }
  
 [dependencies.libp2p]
 version = "0.49"
